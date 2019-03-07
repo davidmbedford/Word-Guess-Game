@@ -6,6 +6,18 @@
 // i need to create a way by which wins and losses are calculated
 // i need to create a way by which the letters that you already used are logged onscreen
 
+var $ = function (id) {
+  return document.getElementById(id);
+}
+
+
+
 var nintendoArray = ["Zelda," "Kirby," "Mario," "Donkey Kong," "Luigi," "Samus," "Link," "Peach," "Bowser," "Yoshi," "Ganondorf," "Fox McCloud," "Falco Lombardi," "Pikachu," "Captain Falcon"]
 var compChoice = math.floor(math.random()*15);
-var answer = nintendoArray[compChoice]
+var answer = nintendoArray[compChoice];
+var ansLength = answer.length;
+var display = [ansLength];
+var attempts = 10;
+
+
+alert(answer);
