@@ -15,13 +15,22 @@ var compChoice = Math.floor(Math.random()*15);
 var answer = nintendoArray[compChoice];
 var ansLength = answer.length;
 var display = [ansLength];
+var win = ansLength;
+var letters - answer.split('');
 var attempts = 10;
+var output=""
+
+
+window.onload function() {
+  setup();
+}
+
 
 document.onkeyup = function(event) {
   var userguess = event.key
 
   if (userguess === "k") {
-    attempts--;
+    alert(answer);
   }
 
 }
