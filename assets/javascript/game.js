@@ -10,14 +10,45 @@ var $ = function (id) {
   return document.getElementById(id);
 }
 
-
-
 var nintendoArray = ["Zelda," "Kirby," "Mario," "Donkey Kong," "Luigi," "Samus," "Link," "Peach," "Bowser," "Yoshi," "Ganondorf," "Fox McCloud," "Falco Lombardi," "Pikachu," "Captain Falcon"]
-var compChoice = math.floor(math.random()*15);
+var compChoice = Math.floor(Math.random()*15);
 var answer = nintendoArray[compChoice];
 var ansLength = answer.length;
 var display = [ansLength];
 var attempts = 10;
 
+document.onkeyup = function(event) {
+  var userguess = event.key
 
-alert(answer);
+  if (userguess === "k") {
+    attempts--;
+  }
+
+}
+
+
+  //var letter = event.key.toLowerCase ();
+  //
+  //if (letter === " x ") { // x = one of the letters in the word.
+  //  //log x on screen and
+  //}
+  //  else {
+//
+  //  }
+//
+  //if (letter === "d") {
+  //  car.driveToWork();
+ //   reWriteStats();
+  //}
+//
+  //if (letter === "w") {
+  //  car.driveAroundWorld();
+  //  reWriteStats();
+  //}
+//
+  //if ( letter  === "t") {
+  //  car.getTuneUp();
+  //  reWriteStats();
+  //}
+//
+//};
