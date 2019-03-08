@@ -6,34 +6,54 @@
 // i need to create a way by which wins and losses are calculated
 // i need to create a way by which the letters that you already used are logged onscreen
 
-var $ = function (id) {
-  return document.getElementById(id);
-}
+//var $ = function (id) {
+//  return document.getElementById(id);
+//}
 
-var nintendoArray = ["Zelda," "Kirby," "Mario," "Donkey Kong," "Luigi," "Samus," "Link," "Peach," "Bowser," "Yoshi," "Ganondorf," "Fox McCloud," "Falco Lombardi," "Pikachu," "Captain Falcon"]
+var nintendoArray = ["ZELDA", "KIRBY", "MARIO", "DONKEY KONG", "LUIGI", "SAMUS", "LINK", "PEACH", "BOWSER", "YOSHI", "GANONDORF", "FOX MCCLOUD", "FALCO LOMBARDI", "PIKACHU", "CAPTAIN FALCON"]
 var compChoice = Math.floor(Math.random()*15);
 var answer = nintendoArray[compChoice];
 var ansLength = answer.length;
 var display = [ansLength];
 var win = ansLength;
-var letters - answer.split('');
+var letters = answer.split('');
 var attempts = 10;
-var output=""
+var output = "";
+var userLetter = "";
 
+alert(answer);
 
-window.onload function() {
-  setup();
-}
-
-
-document.onkeyup = function(event) {
-  var userguess = event.key
-
-  if (userguess === "k") {
-    alert(answer);
+var startup = function() {
+  for (var i = 0; i < answer.length; i++) {
+    display[i] = "_ ";
+    output = output + display[i];
   }
 
+  document.getElementById("compChoice").innerHTML = output;
+  output = "";
+
 }
+
+
+
+
+
+
+window.onload = function() {
+  startup();
+}
+
+
+
+
+// document.onkeyup = function(event) {
+//   var userguess = event.key
+//
+//   if (userguess === "k") {
+   //  alert(answer);
+//   }
+//
+// }
 
 
   //var letter = event.key.toLowerCase ();
