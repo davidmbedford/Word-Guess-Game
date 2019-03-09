@@ -18,8 +18,10 @@ var display = [ansLength];
 var win = ansLength;
 var letters = answer.split('');
 var attempts = 10;
+var attemptsUpdate = "";
 var output = "";
 var userLetter = "";
+var allLetters = [];
 
 alert(answer);
 
@@ -40,25 +42,39 @@ window.onload = function() {
 }
 
 // everything above sets phase 1:
-// getting the game to choose an answer and reveal it as underscores
+// A. getting the game to choose an answer, and B. reveal it as underscores
 //
 // below is my attempt to enable the user to:
-// submit an answer and have it register
+// A. submit an answer, and B. have it register onscreen
 
 document.onkeyup = function(event) {
-  var userLetter = event.key.toUpperCase ();
-  var letterOfAnswer = function() {
-    for (i = 0; i <answer.length; i++) {
 
+  var userLetter = event.key.toUpperCase();
+  var checkLetter = allLetters.includes(userLetter);
+  allLetters.push(userLetter);
+
+  if (checkLetter == true) {
+  }
+  else {
+    attemptsUpdate = attemptsUpdate.concat(" ", userLetter);
+
+    lettersGuessed.innerHTML = attemptsUpdate;
+
+    var correctLetter = 0
+    for (x=0; x < nintendoArray.length; x++) {
+      var correctLetter = nintendoArray.indexOf(userLetter)
+      if (correctLetter != -1) {
+        if (correctLetter == 0) {
+          correctLetter = correctLetter.toUpperCase()
+        }
+      }
     }
 
   }
 
-  //if (letter === "letterOfWord") {
-  //  document.getElementById("compChoice").innerHTML =
-  //};
 
-}
+
+  }
 
 var submit = function() {
 
