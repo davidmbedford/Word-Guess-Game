@@ -6,23 +6,20 @@
 // i need to create a way by which wins and losses are calculated
 // i need to create a way by which the letters that you already used are logged onscreen
 
-//var $ = function (id) {
- // return document.getElementById(id);
-//}
-
-var nintendoArray = ["ZELDA", "KIRBY", "MARIO", "DONKEY KONG", "LUIGI", "SAMUS", "LINK", "PEACH", "BOWSER", "YOSHI", "GANONDORF", "FOX MCCLOUD", "FALCO LOMBARDI", "PIKACHU", "CAPTAIN FALCON"]
-var compChoice = Math.floor(Math.random()*nintendoArray.length);
-var answer = nintendoArray[compChoice];
-var ansLength = answer.length;
-var display = [ansLength];
-var ansDisplay = "";
-var win = ansLength;
-var letters = answer.split('');
+var nintendoArray = ["ZELDA", "KIRBY", "MARIO", "DONKEY KONG", "LUIGI", "SAMUS", "LINK", "PEACH", "BOWSER", "YOSHI", "GANONDORF", "FOX MCCLOUD", "FALCO LOMBARDI", "PIKACHU", "CAPTAIN FALCON"];
+var answer = nintendoArray[Math.floor(Math.random()*nintendoArray.length)];
+var display = [answer.length];
+var ansDisplay = " ";
+var letters = answer.split("");
 var attemptsRem = 10;
 var attemptsUpdate = "";
 var output = "";
 var userLetter = "";
 var allLetters = [];
+var winTest = 0;
+var winValue = 0;
+var wins = 0;
+var losses = 0;
 
 alert(answer);
 
@@ -36,6 +33,8 @@ var startup = function() {
   document.getElementById("answer").innerHTML = "Word: " + output;
   output = " ";
   document.getElementById("attempts").textContent = attemptsRem;
+  document.getElementById("wins").textContent = wins;
+  document.getElementById("losses").textContent = losses;
 
 }
 
@@ -49,6 +48,7 @@ window.onload = function() {
 // below is my attempt to enable the user to:
 // A. submit an answer, and B. have it register onscreen
 
+document.onkeyup = attemptsRem--
 
 
 document.onkeyup = function(event) {
@@ -66,24 +66,37 @@ document.onkeyup = function(event) {
 
     var correctLetter = 0;
 
-    for (x=0; x < nintendoArray.length; x++) {
-      var correctLetter = nintendoArray.indexOf(userLetter)
+    for (x = 0; x < letters.length; x++) {
+      var correctLetter = letters.indexOf(userLetter)
       if (correctLetter != -1) {
         if (correctLetter == 0) {
-          correctLetter = correctLetter.toUpperCase()
+          userLetter = userLetter.toUpperCase()
         }
-        attemptsDisplay[correctLetter] = userLetter;
-        ansDisplay = attemptsDisplay.toString();
+
+        for (y = 0; y < answer.length; y++){
+          ansDisplay = ansDisplay.replace(",", " ");
+        }
+
+        letters[correctLetter] = "9"
+        attemptsRem = attemptsRem + 1;
+        winTest = 0
+
+        for (z = 0; z < letters.length; z++) {
+            winTest = winTest + parseInt(letters[z])
+        }
+
       }
+
+      document.getElementById("answer").innerHTML = ansDisplay;
+      winTest = parseInt(winTest)
 
     }
 
   }
-
-document.getElementById("answer").textContent = ansDisplay;
-
-var attemptsDisplay = ansDisplay.split(" ");
 }
+
+
+
 
 var submit = function() {
 
