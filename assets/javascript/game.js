@@ -35,6 +35,7 @@ var startup = function() {
 
   document.getElementById("answer").innerHTML = "Word: " + output;
   output = " ";
+  document.getElementById("attempts").textContent = attemptsRem;
 
 }
 
@@ -47,6 +48,8 @@ window.onload = function() {
 //
 // below is my attempt to enable the user to:
 // A. submit an answer, and B. have it register onscreen
+
+
 
 document.onkeyup = function(event) {
 
@@ -77,7 +80,7 @@ document.onkeyup = function(event) {
 
   }
 
-document.getElementById("answer").html = ansDisplay;
+document.getElementById("answer").textContent = ansDisplay;
 
 var attemptsDisplay = ansDisplay.split(" ");
 }
