@@ -48,14 +48,12 @@ window.onload = function() {
 // below is my attempt to enable the user to:
 // A. submit an answer, and B. have it register onscreen
 
-document.onkeyup = attemptsRem--
-
-
 document.onkeyup = function(event) {
 
   var userLetter = event.key.toUpperCase();
   var checkLetter = allLetters.includes(userLetter);
   allLetters.push(userLetter);
+  attemptsRem--;
 
   if (checkLetter == true) {
   }
@@ -73,6 +71,9 @@ document.onkeyup = function(event) {
           userLetter = userLetter.toUpperCase()
         }
 
+        attemptsDisplay[correctLetter] = userLetter;
+        ansDisplay = attemptsDisplay.toString();
+
         for (y = 0; y < answer.length; y++){
           ansDisplay = ansDisplay.replace(",", " ");
         }
@@ -87,31 +88,21 @@ document.onkeyup = function(event) {
 
       }
 
-      document.getElementById("answer").innerHTML = ansDisplay;
+      document.getElementById("answer").textContent = ansDisplay;
       winTest = parseInt(winTest)
 
     }
 
   }
+
 }
 
+document.getElementById("answer").textContent = ("", + ansDisplay);
 
+var attemptsDisplay = ansDisplay.split(" ");
 
 
 var submit = function() {
-
-  output = "";
-  userLetter=$("letter").nodeValue;
-  $("letter").value = "";
-
-  for (var x = 0; x < answer.length; x++) {
-    alert(letters[x]);
-    if (userLetter.toUpperCase() == letters[x]){
-      display[x] = userLetter.toUpperCase();
-      win--;
-    }
-      output = output + display[x] + "";
-  };
 
   document.getElementById("game").innerHTML = output;
   output = "";
