@@ -15,9 +15,10 @@ var compChoice = Math.floor(Math.random()*nintendoArray.length);
 var answer = nintendoArray[compChoice];
 var ansLength = answer.length;
 var display = [ansLength];
+var ansDisplay = "";
 var win = ansLength;
 var letters = answer.split('');
-var attempts = 10;
+var attemptsRem = 10;
 var attemptsUpdate = "";
 var output = "";
 var userLetter = "";
@@ -32,7 +33,7 @@ var startup = function() {
     output = output + display[i];
   }
 
-  document.getElementById("compChoice").innerHTML = "Word: " + output;
+  document.getElementById("answer").innerHTML = "Word: " + output;
   output = " ";
 
 }
@@ -58,23 +59,28 @@ document.onkeyup = function(event) {
   else {
     attemptsUpdate = attemptsUpdate.concat(" ", userLetter);
 
-    lettersGuessed.innerHTML = attemptsUpdate;
+    document.getElementById("lettersGuessed").innerHTML = attemptsUpdate;
 
-    var correctLetter = 0
+    var correctLetter = 0;
+
     for (x=0; x < nintendoArray.length; x++) {
       var correctLetter = nintendoArray.indexOf(userLetter)
       if (correctLetter != -1) {
         if (correctLetter == 0) {
           correctLetter = correctLetter.toUpperCase()
         }
+        attemptsDisplay[correctLetter] = userLetter;
+        ansDisplay = attemptsDisplay.toString();
       }
+
     }
 
   }
 
+document.getElementById("answer").html = ansDisplay;
 
-
-  }
+var attemptsDisplay = ansDisplay.split(" ");
+}
 
 var submit = function() {
 
@@ -93,7 +99,7 @@ var submit = function() {
 
   document.getElementById("game").innerHTML = output;
   output = "";
-  attempts--;
+  attemptsRem--;
 
   if (win < 1){
     document.getElementById("endgame").innerHTML = "CORRECT!";
@@ -103,7 +109,7 @@ var submit = function() {
     document.getElementById("endgame").innerHTML = "WRONG!";
   }
   else {
-    document.getElementById("endgame").innerHTML = "You have " + attempts + " attempts left";
+    document.getElementById("endgame").innerHTML = "You have " + attemptsRem + " attempts left";
   }
 
 }
